@@ -38,6 +38,7 @@ class _SksyAppBarState extends State<SksyAppBar> {
               }
             }
           });
+          TabChanged(n.id).dispatch(context);
           return true;
         },
       );
@@ -72,4 +73,9 @@ class BarButton {
   off() {
     isActive = false;
   }
+}
+
+class TabChanged extends Notification {
+  final int id;
+  TabChanged(this.id);
 }
