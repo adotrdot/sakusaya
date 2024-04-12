@@ -55,7 +55,8 @@ class _HomeState extends State<Home> {
             onTap: () {},
           ),
         ],
-      )
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

@@ -49,6 +49,8 @@ class _SksyAppBarState extends State<SksyAppBar> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      shape: const CircularNotchedRectangle(),
+      notchMargin: 6,
       child: Row(
         children: generateButtons(),
       ),
