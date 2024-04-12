@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:sakusaya/app_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key, required this.title});
@@ -32,16 +33,7 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          children: <Widget>[
-            Expanded(child: IconButton(onPressed: () {}, icon: const Icon(Icons.home), tooltip: 'Home',)),
-            Expanded(child: IconButton(onPressed: () {}, icon: const Icon(Icons.history), tooltip: 'Record')),
-            Expanded(child: IconButton(onPressed: () {}, icon: const Icon(Icons.bar_chart), tooltip: 'Chart')),
-            Expanded(child: IconButton(onPressed: () {}, icon: const Icon(Icons.settings), tooltip: 'Settings',)),
-          ],
-        )
-      ),
+      bottomNavigationBar: const SksyAppBar(),
       floatingActionButton: SpeedDial(
         icon: Icons.add,
         activeIcon: Icons.close,
