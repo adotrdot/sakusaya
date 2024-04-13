@@ -17,13 +17,5 @@ class MyApp extends StatelessWidget {
       ),
       routerConfig: goRouter,
     );
-    // return MaterialApp(
-    //   title: 'sakusaya',
-    //   theme: ThemeData(
-    //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
-    //     useMaterial3: true,
-    //   ),
-    //   home: const SksyNavigator(),
-    // );
   }
 }
