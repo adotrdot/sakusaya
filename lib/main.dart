@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sakusaya/navigator.dart';
+import 'package:sakusaya/routing/navigator.dart';
 
 void main() {
   runApp(const MyApp());

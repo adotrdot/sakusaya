@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sakusaya/icon_btn.dart';
+import 'package:sakusaya/ui/icon_btn.dart';
 
 class SksyAppBar extends StatefulWidget {
   const SksyAppBar({super.key, required this.curTabIndex});

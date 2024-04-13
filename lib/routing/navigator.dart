@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sakusaya/app_bar.dart';
-import 'package:sakusaya/chart.dart';
-import 'package:sakusaya/fab.dart';
+import 'package:sakusaya/ui/app_bar.dart';
+import 'package:sakusaya/pages/chart.dart';
+import 'package:sakusaya/ui/fab.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sakusaya/history.dart';
-import 'package:sakusaya/home.dart';
-import 'package:sakusaya/routes.dart';
-import 'package:sakusaya/settings.dart';
+import 'package:sakusaya/pages/history.dart';
+import 'package:sakusaya/pages/home.dart';
+import 'package:sakusaya/routing/routes.dart';
+import 'package:sakusaya/pages/settings.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> shellNavigatorKey = GlobalKey<NavigatorState>();
