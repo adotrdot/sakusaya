@@ -11,6 +11,22 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String title = 'Home';
+  int curTabIndex = 2;
+
+  Text getTitle() {
+    String newTitle = '';
+    switch(curTabIndex) {
+      case 0:
+        newTitle = 'Home';
+      case 1:
+        newTitle = 'History';
+      case 2:
+        newTitle = 'Chart';
+      case 3:
+        newTitle = 'Settings';
+    }
+    return Text(newTitle);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +34,7 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(title),
+          title: getTitle(),
         ),
         body: Container(
           margin: const EdgeInsets.all(8.0),
@@ -26,30 +42,17 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text(
-                'Hello World',
-              ),
+              Text('Hello world'),
             ],
           ),
         ),
-        bottomNavigationBar: const SksyAppBar(),
+        bottomNavigationBar: SksyAppBar(curTabIndex: curTabIndex),
         floatingActionButton: const SksyFAB(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
       onNotification: (n) {
         setState(() {
-          switch(n.id) {
-            case 0:
-              title = 'Home';
-            case 1:
-              title = 'History';
-            case 2:
-              title = 'Chart';
-            case 3:
-              title = 'Settings';
-            default:
-              title = '';
-          }
+          curTabIndex = n.id;
         });
         return true;
       },

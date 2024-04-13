@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sakusaya/icon_btn.dart';
 
 class SksyAppBar extends StatefulWidget {
-  const SksyAppBar({super.key});
+  const SksyAppBar({super.key, required this.curTabIndex});
+
+  final int curTabIndex;
 
   @override
   State<SksyAppBar> createState() => _SksyAppBarState();
@@ -10,7 +12,7 @@ class SksyAppBar extends StatefulWidget {
 
 class _SksyAppBarState extends State<SksyAppBar> {
   var btns = [
-    BarButton(const Icon(Icons.home), 'Home', true),
+    BarButton(const Icon(Icons.home), 'Home', false),
     BarButton(const Icon(Icons.history), 'History', false),
     BarButton(const Icon(Icons.bar_chart), 'Chart', false),
     BarButton(const Icon(Icons.settings), 'Settings', false),
@@ -19,6 +21,7 @@ class _SksyAppBarState extends State<SksyAppBar> {
   generateButtons() {
     var barBtns = <Widget>[];
     for (var i = 0; i < btns.length; i++) {
+      if (i == widget.curTabIndex) btns[i].on();
       var newBtn = NotificationListener<ButtonPressed>(
         child: Expanded(
           child: SksyIconButton(
