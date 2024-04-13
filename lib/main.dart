@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sakusaya/routing/navigator.dart';
 
-void main() {
+void main() async {
+  // Prepare database
+  await Hive.initFlutter();
+  await Hive.openBox('pocket');
+
+  // Run app
   runApp(const MyApp());
 }
 
