@@ -16,16 +16,16 @@ class SksyHome extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const Text('Total amount: 0'),
-            const Text('Alokasi'),
-            const Text('Makan & Minum: 0'),
-            const Text('Transportasi: 0'),
-            const Text('Kontrakan: 0'),
-            const Text('Hiburan: 0'),
-            const Text('Lain-lain: 0'),
+            const Text('Pocket Money: 0'),
+            const Text('Allocation'),
+            const Text('Food & Drink: 0'),
+            const Text('Transportation: 0'),
+            const Text('Rent: 0'),
+            const Text('Entertainment: 0'),
+            const Text('Others: 0'),
             ElevatedButton(
               onPressed: () {},
-              child: Text('Edit Alokasi')
+              child: const Text('Edit Allocation')
             ),
           ],
         ),
