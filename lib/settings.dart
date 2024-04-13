@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class SksyHome extends StatelessWidget {
-  const SksyHome({super.key});
+class SksySettings extends StatelessWidget {
+  const SksySettings({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Home'),
+        title: const Text('Settings'),
       ),
       body: Container(
         margin: const EdgeInsets.all(8.0),
@@ -16,7 +16,7 @@ class SksyHome extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text('This is Home'),
+            Text('This is Settings'),
           ],
         ),
       ),
