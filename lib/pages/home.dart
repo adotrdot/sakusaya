@@ -12,11 +12,21 @@ class SksyHome extends StatelessWidget {
       ),
       body: Container(
         margin: const EdgeInsets.all(8.0),
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text('This is Home'),
+            const Text('Total amount: 0'),
+            const Text('Alokasi'),
+            const Text('Makan & Minum: 0'),
+            const Text('Transportasi: 0'),
+            const Text('Kontrakan: 0'),
+            const Text('Hiburan: 0'),
+            const Text('Lain-lain: 0'),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Edit Alokasi')
+            ),
           ],
         ),
       ),
