@@ -1,51 +1,71 @@
 import 'package:flutter/material.dart';
 import 'package:sakusaya/app_bar.dart';
+import 'package:sakusaya/chart.dart';
 import 'package:sakusaya/fab.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sakusaya/history.dart';
+import 'package:sakusaya/home.dart';
+import 'package:sakusaya/routes.dart';
+import 'package:sakusaya/settings.dart';
+
+final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> shellNavigatorKey = GlobalKey<NavigatorState>();
+final GoRouter goRouter = GoRouter(
+  navigatorKey: rootNavigatorKey,
+  initialLocation: SksyRoutes.routes[0]!,
+  routes: [
+    ShellRoute(
+      navigatorKey: shellNavigatorKey,
+      builder: (context, state, child) {
+        return SksyNavigator(page: child);
+      },
+      routes: [
+        GoRoute(
+          path: SksyRoutes.routes[0]!,
+          builder: (context, state) {
+            return const SksyHome();
+          },
+        ),
+        GoRoute(
+          path: SksyRoutes.routes[1]!,
+          builder: (context, state) {
+            return const SksyHistory();
+          },
+        ),
+        GoRoute(
+          path: SksyRoutes.routes[2]!,
+          builder: (context, state) {
+            return const SksyChart();
+          },
+        ),
+        GoRoute(
+          path: SksyRoutes.routes[3]!,
+          builder: (context, state) {
+            return const SksySettings();
+          }
+        ),
+      ],
+    ),
+  ],
+);
 
 class SksyNavigator extends StatefulWidget {
-  const SksyNavigator({super.key});
+  const SksyNavigator({super.key, required this.page});
+
+  final Widget page;
 
   @override
   State<SksyNavigator> createState() => _SksyNavigatorState();
 }
 
 class _SksyNavigatorState extends State<SksyNavigator> {
-  String title = 'Home';
-  int curTabIndex = 2;
-
-  Text getTitle() {
-    String newTitle = '';
-    switch(curTabIndex) {
-      case 0:
-        newTitle = 'Home';
-      case 1:
-        newTitle = 'History';
-      case 2:
-        newTitle = 'Chart';
-      case 3:
-        newTitle = 'Settings';
-    }
-    return Text(newTitle);
-  }
+  int curTabIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return NotificationListener<TabChanged>(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: getTitle(),
-        ),
-        body: Container(
-          margin: const EdgeInsets.all(8.0),
-          child: const Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text('Hello world'),
-            ],
-          ),
-        ),
+        body: widget.page,
         bottomNavigationBar: SksyAppBar(curTabIndex: curTabIndex),
         floatingActionButton: const SksyFAB(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -53,6 +73,7 @@ class _SksyNavigatorState extends State<SksyNavigator> {
       onNotification: (n) {
         setState(() {
           curTabIndex = n.id;
+          context.go(SksyRoutes.routes[curTabIndex]!);
         });
         return true;
       },

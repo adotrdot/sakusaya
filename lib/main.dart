@@ -9,13 +9,21 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'sakusaya',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: const SksyNavigator(),
+      routerConfig: goRouter,
     );
+    // return MaterialApp(
+    //   title: 'sakusaya',
+    //   theme: ThemeData(
+    //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
+    //     useMaterial3: true,
+    //   ),
+    //   home: const SksyNavigator(),
+    // );
   }
 }
