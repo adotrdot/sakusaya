@@ -1,27 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sakusaya/routing/navigator.dart';
+import 'package:sakusaya/db.dart';
 
-void main() async {
-  // Prepare database
-  await Hive.initFlutter();
-  await Hive.openBox('pocket');
-
+void main() {
   // Run app
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final Future<bool> _loadedDB = SksysDatabase().initDB();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'sakusaya',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
-        useMaterial3: true,
-      ),
-      routerConfig: goRouter,
+    return FutureBuilder(
+      future: _loadedDB,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return MaterialApp.router(
+            title: 'sakusaya',
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
+              useMaterial3: true,
+            ),
+            routerConfig: goRouter,
+          );
+        } else {
+          return const Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 60,
+                  height: 60,
+                  child: CircularProgressIndicator(),
+                ),
+              ],
+            ),
+          );
+        }
+      },
     );
   }
 }

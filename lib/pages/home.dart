@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:sakusaya/db.dart';
 
 class SksyHome extends StatefulWidget {
   const SksyHome({super.key});
@@ -10,7 +10,6 @@ class SksyHome extends StatefulWidget {
 }
 
 class _SksyHomeState extends State<SksyHome> {
-  var box = Hive.box('pocket');
   final totalMoneyController = TextEditingController();
 
   @override
@@ -29,23 +28,70 @@ class _SksyHomeState extends State<SksyHome> {
             Row(
               children: [
                 ValueListenableBuilder(
-                  valueListenable: box.listenable(keys: ['totalMoney']),
+                  valueListenable: SksysDatabase.boxPocket!.listenable(keys: ['totalMoney']),
                   builder: (context, box, widget) {
                     return Text('Pocket Money: ${box.get('totalMoney', defaultValue: 0)}');
                   }
                 ),
-                IconButton(
-                  onPressed: () {dialogBuilder(context);},
-                  icon: const Icon(Icons.edit),
+              ],
+            ),
+            const Row(
+              children: [
+                Text('Expenses'),
+              ],
+            ),
+            Row(
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: SksysDatabase.boxExpenses!.listenable(keys: ['foodDrink']),
+                  builder: (context, box, widget) {
+                    return Text('Food & Drink: ${box.get('foodDrink', defaultValue: 0)}');
+                  }
                 ),
               ],
             ),
-            const Text('Allocation'),
-            Text('Food & Drink: ${box.get('foodDrink', defaultValue: 0)}'),
-            Text('Transportation: ${box.get('transport', defaultValue: 0)}'),
-            Text('Rent: ${box.get('rent', defaultValue: 0)}'),
-            Text('Entertainment: ${box.get('entertain', defaultValue: 0)}'),
-            Text('Others: ${box.get('others', defaultValue: 0)}'),
+            Row(
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: SksysDatabase.boxExpenses!.listenable(keys: ['transport']),
+                  builder: (context, box, widget) {
+                    return Text('Transportatioin: ${box.get('transport', defaultValue: 0)}');
+                  }
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: SksysDatabase.boxExpenses!.listenable(keys: ['rent']),
+                  builder: (context, box, widget) {
+                    return Text('Rent: ${box.get('rent', defaultValue: 0)}');
+                  }
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: SksysDatabase.boxExpenses!.listenable(keys: ['entertain']),
+                  builder: (context, box, widget) {
+                    return Text('Entertainment: ${box.get('entertain', defaultValue: 0)}');
+                  }
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: SksysDatabase.boxExpenses!.listenable(keys: ['others']),
+                  builder: (context, box, widget) {
+                    return Text('Others: ${box.get('others', defaultValue: 0)}');
+                  }
+                ),
+              ],
+            ),
+            const Text('Income Sources'),
+
             ElevatedButton(
               onPressed: () {},
               child: const Text('Edit Allocation')
@@ -81,7 +127,7 @@ class _SksyHomeState extends State<SksyHome> {
                 } catch(e) {
                   newValue = 0;
                 }
-                box.put('totalMoney', newValue);
+                SksysDatabase.boxPocket!.put('totalMoney', newValue);
                 Navigator.of(context).pop();
               },
               child: const Text('OK'),
