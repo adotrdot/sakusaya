@@ -84,8 +84,6 @@ class _SksyDialogBuilderState extends State<SksyDialogBuilder> {
             int amount = 0;
             amount = int.parse(amountController.text);
             selectedCategory = (selectedCategory == null) ? dropdownItems.first['value'] : selectedCategory;
-            print(selectedCategory);
-            print(amount);
             box.put(selectedCategory, amount);
             Navigator.of(context).pop();
           },
