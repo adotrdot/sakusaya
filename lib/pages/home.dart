@@ -55,7 +55,7 @@ class _SksyHomeState extends State<SksyHome> {
                 ValueListenableBuilder(
                   valueListenable: SksysDatabase.boxExpenses!.listenable(keys: ['transport']),
                   builder: (context, box, widget) {
-                    return Text('Transportatioin: ${box.get('transport', defaultValue: 0)}');
+                    return Text('Transportation: ${box.get('transport', defaultValue: 0)}');
                   }
                 ),
               ],
