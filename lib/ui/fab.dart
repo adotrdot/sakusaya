@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:sakusaya/ui/expenses_dialog.dart';
+import 'package:sakusaya/ui/income_dialog.dart';
 
 class SksyFAB extends StatefulWidget {
   const SksyFAB({super.key});
@@ -27,7 +28,7 @@ class _SksyFABState extends State<SksyFAB> {
         SpeedDialChild(
           child: const Icon(Icons.arrow_downward),
           label: 'Income',
-          onTap: () {},
+          onTap: () {SksyIncomeDialog.build(context);},
         ),
         SpeedDialChild(
           child: const Icon(Icons.arrow_upward),

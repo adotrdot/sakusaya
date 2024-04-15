@@ -91,10 +91,45 @@ class _SksyHomeState extends State<SksyHome> {
               ],
             ),
             const Text('Income Sources'),
-
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Edit Allocation')
+            Row(
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: SksysDatabase.boxIncome!.listenable(keys: ['parents']),
+                  builder: (context, box, widget) {
+                    return Text('Parents: ${box.get('parents', defaultValue: 0)}');
+                  }
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: SksysDatabase.boxIncome!.listenable(keys: ['tutor']),
+                  builder: (context, box, widget) {
+                    return Text('Tutor: ${box.get('tutor', defaultValue: 0)}');
+                  }
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: SksysDatabase.boxIncome!.listenable(keys: ['projects']),
+                  builder: (context, box, widget) {
+                    return Text('Projects: ${box.get('projects', defaultValue: 0)}');
+                  }
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: SksysDatabase.boxIncome!.listenable(keys: ['others']),
+                  builder: (context, box, widget) {
+                    return Text('Others: ${box.get('others', defaultValue: 0)}');
+                  }
+                ),
+              ],
             ),
           ],
         ),

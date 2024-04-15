@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:sakusaya/db.dart';
 
 class SksyDialogBuilder extends StatefulWidget {
   const SksyDialogBuilder({
@@ -81,10 +82,19 @@ class _SksyDialogBuilderState extends State<SksyDialogBuilder> {
       actions: <Widget>[
         TextButton(
           onPressed: () {
+            // Get amount
             int amount = 0;
             amount = int.parse(amountController.text);
+
+            // Insert into database
             selectedCategory = (selectedCategory == null) ? dropdownItems.first['value'] : selectedCategory;
             box.put(selectedCategory, amount);
+            
+            // Change total money
+            if (box.name == 'expenses') amount *= -1;
+            SksysDatabase.boxPocket!.put('totalMoney', SksysDatabase.boxPocket!.get('totalMoney')+amount);
+
+            // Destroy dialog window
             Navigator.of(context).pop();
           },
           child: const Text('OK'),
