@@ -109,7 +109,7 @@ class _SksyDialogBuilderState extends State<SksyDialogBuilder> {
             // Add to history
             DateTime datetime = DateTime.now();
             String date = '${datetime.year}/${datetime.month}/${datetime.day}';
-            List history = box.get('history/$date', defaultValue: []);
+            List history = SksyDatabase.boxHistory!.get(date, defaultValue: []);
             Map<String, dynamic> newHistory = {
               'amount': amount,
               'type': box.name,
@@ -118,7 +118,7 @@ class _SksyDialogBuilderState extends State<SksyDialogBuilder> {
               'time': datetime,
             };
             history.add(newHistory);
-            box.put('history/$date', history);
+            SksyDatabase.boxHistory!.put(date, history);
 
             // Destroy dialog window
             Navigator.of(context).pop();
