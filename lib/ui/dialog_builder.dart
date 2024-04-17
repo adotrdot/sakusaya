@@ -108,13 +108,14 @@ class _SksyDialogBuilderState extends State<SksyDialogBuilder> {
 
             // Add to history
             DateTime datetime = DateTime.now();
-            String date = '${datetime.year}-${datetime.month}-${datetime.day}';
+            String date = '${datetime.year}/${datetime.month}/${datetime.day}';
             List history = box.get('history/$date', defaultValue: []);
             Map<String, dynamic> newHistory = {
-              'amount': amount.abs(),
+              'amount': amount,
+              'type': box.name,
               'category': categoryController.text,
               'detail': detailController.text,
-              'time': '${datetime.hour}:${datetime.minute}',
+              'time': datetime,
             };
             history.add(newHistory);
             box.put('history/$date', history);
