@@ -28,7 +28,7 @@ class _SksyHomeState extends State<SksyHome> {
             Row(
               children: [
                 ValueListenableBuilder(
-                  valueListenable: SksysDatabase.boxPocket!.listenable(keys: ['totalMoney']),
+                  valueListenable: SksyDatabase.boxPocket!.listenable(keys: ['totalMoney']),
                   builder: (context, box, widget) {
                     return Text('Pocket Money: ${box.get('totalMoney', defaultValue: 0)}');
                   }
@@ -43,7 +43,7 @@ class _SksyHomeState extends State<SksyHome> {
             Row(
               children: [
                 ValueListenableBuilder(
-                  valueListenable: SksysDatabase.boxExpenses!.listenable(keys: ['foodDrink']),
+                  valueListenable: SksyDatabase.boxExpenses!.listenable(keys: ['foodDrink']),
                   builder: (context, box, widget) {
                     return Text('Food & Drink: ${box.get('foodDrink', defaultValue: 0)}');
                   }
@@ -53,7 +53,7 @@ class _SksyHomeState extends State<SksyHome> {
             Row(
               children: [
                 ValueListenableBuilder(
-                  valueListenable: SksysDatabase.boxExpenses!.listenable(keys: ['transport']),
+                  valueListenable: SksyDatabase.boxExpenses!.listenable(keys: ['transport']),
                   builder: (context, box, widget) {
                     return Text('Transportation: ${box.get('transport', defaultValue: 0)}');
                   }
@@ -63,7 +63,7 @@ class _SksyHomeState extends State<SksyHome> {
             Row(
               children: [
                 ValueListenableBuilder(
-                  valueListenable: SksysDatabase.boxExpenses!.listenable(keys: ['rent']),
+                  valueListenable: SksyDatabase.boxExpenses!.listenable(keys: ['rent']),
                   builder: (context, box, widget) {
                     return Text('Rent: ${box.get('rent', defaultValue: 0)}');
                   }
@@ -73,7 +73,7 @@ class _SksyHomeState extends State<SksyHome> {
             Row(
               children: [
                 ValueListenableBuilder(
-                  valueListenable: SksysDatabase.boxExpenses!.listenable(keys: ['entertain']),
+                  valueListenable: SksyDatabase.boxExpenses!.listenable(keys: ['entertain']),
                   builder: (context, box, widget) {
                     return Text('Entertainment: ${box.get('entertain', defaultValue: 0)}');
                   }
@@ -83,7 +83,7 @@ class _SksyHomeState extends State<SksyHome> {
             Row(
               children: [
                 ValueListenableBuilder(
-                  valueListenable: SksysDatabase.boxExpenses!.listenable(keys: ['others']),
+                  valueListenable: SksyDatabase.boxExpenses!.listenable(keys: ['others']),
                   builder: (context, box, widget) {
                     return Text('Others: ${box.get('others', defaultValue: 0)}');
                   }
@@ -94,7 +94,7 @@ class _SksyHomeState extends State<SksyHome> {
             Row(
               children: [
                 ValueListenableBuilder(
-                  valueListenable: SksysDatabase.boxIncome!.listenable(keys: ['parents']),
+                  valueListenable: SksyDatabase.boxIncome!.listenable(keys: ['parents']),
                   builder: (context, box, widget) {
                     return Text('Parents: ${box.get('parents', defaultValue: 0)}');
                   }
@@ -104,7 +104,7 @@ class _SksyHomeState extends State<SksyHome> {
             Row(
               children: [
                 ValueListenableBuilder(
-                  valueListenable: SksysDatabase.boxIncome!.listenable(keys: ['tutor']),
+                  valueListenable: SksyDatabase.boxIncome!.listenable(keys: ['tutor']),
                   builder: (context, box, widget) {
                     return Text('Tutor: ${box.get('tutor', defaultValue: 0)}');
                   }
@@ -114,7 +114,7 @@ class _SksyHomeState extends State<SksyHome> {
             Row(
               children: [
                 ValueListenableBuilder(
-                  valueListenable: SksysDatabase.boxIncome!.listenable(keys: ['projects']),
+                  valueListenable: SksyDatabase.boxIncome!.listenable(keys: ['projects']),
                   builder: (context, box, widget) {
                     return Text('Projects: ${box.get('projects', defaultValue: 0)}');
                   }
@@ -124,7 +124,7 @@ class _SksyHomeState extends State<SksyHome> {
             Row(
               children: [
                 ValueListenableBuilder(
-                  valueListenable: SksysDatabase.boxIncome!.listenable(keys: ['others']),
+                  valueListenable: SksyDatabase.boxIncome!.listenable(keys: ['others']),
                   builder: (context, box, widget) {
                     return Text('Others: ${box.get('others', defaultValue: 0)}');
                   }
@@ -162,7 +162,7 @@ class _SksyHomeState extends State<SksyHome> {
                 } catch(e) {
                   newValue = 0;
                 }
-                SksysDatabase.boxPocket!.put('totalMoney', newValue);
+                SksyDatabase.boxPocket!.put('totalMoney', newValue);
                 Navigator.of(context).pop();
               },
               child: const Text('OK'),

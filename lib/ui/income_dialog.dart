@@ -16,7 +16,7 @@ class SksyIncomeDialog {
             {'value': 'projects', 'label': 'Projects'},
             {'value': 'others', 'label': 'Others'},
           ],
-          box: SksysDatabase.boxIncome!
+          box: SksyDatabase.boxIncome!
         );
       }
     );

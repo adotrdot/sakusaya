@@ -23,6 +23,7 @@ class SksyDialogBuilder extends StatefulWidget {
 class _SksyDialogBuilderState extends State<SksyDialogBuilder> {
   TextEditingController amountController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
+  TextEditingController detailController = TextEditingController();
   String? selectedCategory;
 
   @override
@@ -77,6 +78,17 @@ class _SksyDialogBuilderState extends State<SksyDialogBuilder> {
               },
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            child: TextField(
+              controller: detailController,
+              decoration: const InputDecoration(
+                label: Text('Detail'),
+                border: OutlineInputBorder(),
+                hintText: 'Enter detail',
+              ),
+            ),
+          ),
         ],
       ),
       actions: <Widget>[
@@ -92,7 +104,20 @@ class _SksyDialogBuilderState extends State<SksyDialogBuilder> {
             
             // Change total money
             if (box.name == 'expenses') amount *= -1;
-            SksysDatabase.boxPocket!.put('totalMoney', SksysDatabase.boxPocket!.get('totalMoney')+amount);
+            SksyDatabase.boxPocket!.put('totalMoney', SksyDatabase.boxPocket!.get('totalMoney', defaultValue: 0)+amount);
+
+            // Add to history
+            DateTime datetime = DateTime.now();
+            String date = '${datetime.year}-${datetime.month}-${datetime.day}';
+            List history = box.get('history/$date', defaultValue: []);
+            Map<String, dynamic> newHistory = {
+              'amount': amount.abs(),
+              'category': categoryController.text,
+              'detail': detailController.text,
+              'time': '${datetime.hour}:${datetime.minute}',
+            };
+            history.add(newHistory);
+            box.put('history/$date', history);
 
             // Destroy dialog window
             Navigator.of(context).pop();

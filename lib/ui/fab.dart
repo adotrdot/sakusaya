@@ -33,7 +33,7 @@ class _SksyFABState extends State<SksyFAB> {
         SpeedDialChild(
           child: const Icon(Icons.arrow_upward),
           label: 'Expense',
-          onTap: () {SksysExpenseDialog.build(context);},
+          onTap: () {SksyExpenseDialog.build(context);},
         ),
       ],
     );

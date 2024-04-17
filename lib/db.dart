@@ -1,11 +1,10 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-class SksysDatabase {
+class SksyDatabase {
   // Initializer
   static Box? boxPocket;
   static Box? boxIncome;
   static Box? boxExpenses;
-  static Box? boxTransaction;
   static Future<bool>? boxOpened;
 
   Future<bool> initDB() async {
@@ -13,6 +12,12 @@ class SksysDatabase {
     boxIncome = await Hive.openBox('income');
     boxExpenses = await Hive.openBox('expenses');
     boxPocket = await Hive.openBox('pocket');
+
+    // Debug only
+    boxIncome!.clear();
+    boxExpenses!.clear();
+    boxPocket!.clear();
+
     return true;
   }
 }
