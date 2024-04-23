@@ -8,19 +8,30 @@ class SksyDatabase {
   static Box? boxHistory;
   static Future<bool>? boxOpened;
 
-  Future<bool> initDB() async {
+  static Future<bool> initDB() async {
     await Hive.initFlutter();
     boxIncome = await Hive.openBox('income');
     boxExpenses = await Hive.openBox('expenses');
     boxPocket = await Hive.openBox('pocket');
     boxHistory = await Hive.openBox('history');
 
-    // Debug only
+    resetDB(); // Debug only
+
+    return true;
+  }
+
+  static void resetMoney() {
     boxIncome!.clear();
     boxExpenses!.clear();
     boxPocket!.clear();
-    boxHistory!.clear();
+  }
 
-    return true;
+  static void resetHistory() {
+    boxHistory!.clear();
+  }
+
+  static void resetDB() {
+    resetMoney();
+    resetHistory();
   }
 }

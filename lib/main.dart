@@ -15,7 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final Future<bool> _loadedDB = SksyDatabase().initDB();
+  final Future<bool> _loadedDB = SksyDatabase.initDB();
 
   @override
   Widget build(BuildContext context) {

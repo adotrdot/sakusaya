@@ -102,6 +102,10 @@ class _SksyHomeState extends State<SksyHome> {
                     return Text('Others: $money');
                   }
                 ),
+                TextButton(
+                  onPressed: () {SksyDatabase.resetMoney();},
+                  child: const Text('Reset'),
+                ),
               ],
             ),
           ],
