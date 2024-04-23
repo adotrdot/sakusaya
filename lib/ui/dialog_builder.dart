@@ -111,13 +111,13 @@ class _SksyDialogBuilderState extends State<SksyDialogBuilder> {
             String date = '${datetime.year}/${datetime.month}/${datetime.day}';
             List history = SksyDatabase.boxHistory!.get(date, defaultValue: []);
             Map<String, dynamic> newHistory = {
-              'amount': amount,
+              'amount': amount.abs(),
               'type': box.name,
               'category': categoryController.text,
               'detail': detailController.text,
               'time': datetime,
             };
-            history.add(newHistory);
+            history.insert(0, newHistory); // Insert to front
             SksyDatabase.boxHistory!.put(date, history);
 
             // Destroy dialog window
