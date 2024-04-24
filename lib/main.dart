@@ -30,6 +30,7 @@ class _MyAppState extends State<MyApp> {
               useMaterial3: true,
             ),
             routerConfig: goRouter,
+            debugShowCheckedModeBanner: false,
           );
         } else {
           return const Center(
