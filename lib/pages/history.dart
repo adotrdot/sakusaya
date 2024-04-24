@@ -21,6 +21,7 @@ class _SksyHistoryState extends State<SksyHistory> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('History'),
+        centerTitle: true,
       ),
       body: ValueListenableBuilder(
         valueListenable: SksyDatabase.boxHistory!.listenable(),

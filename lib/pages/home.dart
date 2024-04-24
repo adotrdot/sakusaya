@@ -20,6 +20,7 @@ class _SksyHomeState extends State<SksyHome> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Home'),
+        centerTitle: true,
       ),
       body: Container(
         margin: const EdgeInsets.all(8.0),

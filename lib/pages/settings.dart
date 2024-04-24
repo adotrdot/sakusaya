@@ -9,6 +9,7 @@ class SksySettings extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Settings'),
+        centerTitle: true,
       ),
       body: Container(
         margin: const EdgeInsets.all(8.0),
